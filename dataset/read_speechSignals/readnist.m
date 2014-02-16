@@ -175,7 +175,7 @@ if 1 == useshorten
   fname=fnam(length(fnam));
   tmpfilename = strcat('uncompressed_', fname);
  % running shorten for decompression
-  cmd = ['./Users/Tanguero/Research_paper/dataset/shorten -x -d ' num2str(headerlen) ' ' filename ' ' tmpfilename{1} ';'];
+  cmd = ['./afs/inf.ed.ac.uk/user/s08/s0840844/Research_paper/dataset/shorten -x -d ' num2str(headerlen) ' ' filename ' ' tmpfilename{1} ';'];
   unix (cmd)
  % tmpfilename=strcat('signalExtraction/',tmpfilename{1})
   fid=fopen(tmpfilename{1},'r',['ieee-' endian] );
