@@ -169,8 +169,7 @@ if 1 == useshorten
 	     ' http://www.hornig.net/shorten/ and add its'...
 	     ' directory to the Matlab path.']);
   end
- disp( sprintf('it works here'));
-  %My own code%
+  %%Author : Adnan 
   %creating temporary file
   fnam=strsplit(filename,'/');
   fname=fnam(length(fnam));
