@@ -176,7 +176,7 @@ if 1 == useshorten
   fname=fnam(length(fnam));
   tmpfilename = strcat('uncompressed_', fname);
  % running shorten for decompression
-  cmd = ['./shorten -x -d ' num2str(headerlen) ' ' filename ' ' tmpfilename{1} ';'];
+  cmd = ['.g/shorten -x -d ' num2str(headerlen) ' ' filename ' ' tmpfilename{1} ';'];
   unix (cmd)
  %tmpfilename=strcat('/home/adnan/Research_paper/dataset/',tmpfilename{1})
   fid=fopen(tmpfilename{1},'r',['ieee-' endian] );
