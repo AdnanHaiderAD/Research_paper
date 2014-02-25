@@ -24,12 +24,12 @@ for i=1:length(genders)
            %%read data and conduct preprocessing : resampling followed by silence removal
            speechdata= readnist(datapath);
            DATA{count}= filterSignal(speechdata);
-           speakersDigitIndex{count} ={listofSpeakers(j) , data(k)};
+           speakersDigitIndex{count} ={listofSpeakers(j) ; data(k)};
            count=count+1;
         end
     end
 end
-save('TidigitsRawdata.mat','DATA','speakersDigitIndex');
+save('TidigitsRawdata.mat',
 end
            
     
