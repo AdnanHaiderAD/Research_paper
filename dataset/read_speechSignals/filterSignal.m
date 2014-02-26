@@ -21,7 +21,7 @@ if threshold==0
     
 end
     outputSignal=signal(abs(signal)>threshold) ;
-    outputSignal= downsample(outputSignal,2);
+   %% outputSignal= resample(outputSignal,1,2);
 end
 
     
