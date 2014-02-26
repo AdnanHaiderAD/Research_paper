@@ -5,7 +5,7 @@ numberofSamples =length(RawData);
 MFCCdata =cell(numberofSamples,1);
 
 for i=1: numberofSamples
-    MFCCdata{i} = melfcc(RawData{i});
+    MFCCdata{i} = melfcc(RawData{i},10000);
 end
 save('MFCCTIDIGITS.mat','MFCCdata');
 end
