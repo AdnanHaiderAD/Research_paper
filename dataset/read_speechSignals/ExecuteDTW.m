@@ -1,6 +1,6 @@
 function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
-%%Runs the DTW/Adaptive DTW algorithm to find the most similar distinct
-%%speech pattern for each pattern in the test data set of TIDIGITS 
+%%Input: Dataset (Tidigits corpus/ Switchboard), windowSize
+% Applies DTW algorithm to group together similar patterns
 costMatrix=zeros(length(MFCCDATA),length(MFCCDATA));
 output= zeros(length(MFCCDATA),3);
 for i =1 : length(MFCCDATA)
@@ -13,6 +13,9 @@ for i =1 : length(MFCCDATA)
     id_closestspeaker='';
     id_closestClass='';
     for j=1:length(MFCCDATA)
+        if(i==j)
+            continue;
+        end
         pattern=MFCCDATA{j}; 
         meta =SpeakersDigitsIndex{j};
         spid =meta{1};
@@ -22,12 +25,12 @@ for i =1 : length(MFCCDATA)
             
         else
             cost= DynamicTimeWarping(currentPattern,pattern,windowSize);
+            costMatrix(i,j)=cost;
         end
         if (cost <min_cost) 
              min_cost=cost;
              id_closestspeaker=spid;
              id_closestClass=dclass;
-             costMatrix(i,j)=cost;
         end
     end
     output(i,1)=min_cost;

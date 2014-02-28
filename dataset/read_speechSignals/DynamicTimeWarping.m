@@ -1,7 +1,7 @@
 function optimumCost = DynamicTimeWarping(varargin)
 %%The DTW algorithm using a symmetric weighting function t ensure
 %%D(A,B)=D(B,A)
-varargin
+varargi
 if length(varargin)<2
     error('input:arg','The DTW arguments needs to be two patterns')
 end
@@ -29,10 +29,12 @@ end
 
 %% augmenting patterns with a vector of zeros
 patternA = [zeros(length(patternA(:,1)),1) patternA];
-patternB = [zeros(length(patternA(:,1)),1) patternB];
+patternB = [zeros(length(patternB(:,1)),1) patternB];
+patternANum = size(patternA,2);
+patternBNum= size(patternB,2);
 
-for i=2:length(patternA)
-    for j=2:length(patternB)
+for i=2:patternANum
+    for j=2:patternBNum
         if (length(varargin)==3 && abs(i-j)>windowSize)
             continue;
         end
