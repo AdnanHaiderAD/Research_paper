@@ -1,6 +1,6 @@
 function DATA = readTidigitsDATA()
 DATA={};
-speakersDigitIndex={};
+speakersDigitIndex=cell(1467,1);
 count=1;
 %% path to tigits speech data
 pathname ='/group/corpora/public/tidigits/tidigits/test/';

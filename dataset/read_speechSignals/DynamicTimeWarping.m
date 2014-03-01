@@ -42,8 +42,9 @@ for i=2:patternANum
         DTW(i,j)  = min([(DTW(i,j-1)+cost) (DTW(i-1,j-1)+2*cost) (DTW(i-1,j)+cost)]);
     end
 end
-optimumCost = DTW(length(patternA),length(patternB))/(length(patternA)+length(patternB)-2);
-optimumCost= log(optimumCost);
+
+optimumCost = DTW(patternANum,patternBNum)/(patternANum+patternBNum-2);
+
 
 
 

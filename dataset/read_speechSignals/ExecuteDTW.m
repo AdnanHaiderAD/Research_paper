@@ -1,9 +1,11 @@
 function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
 %%Input: Dataset (Tidigits corpus/ Switchboard), windowSize
 % Applies DTW algorithm to group together similar patterns
+tic;
 costMatrix=zeros(length(MFCCDATA),length(MFCCDATA));
 output= zeros(length(MFCCDATA),3);
-for i =1 : length(MFCCDATA)
+count=1;
+for i =1 : 10
     currentPattern =MFCCDATA{i};
     metaData =SpeakersDigitsIndex{i};
     speakerid =metaData{1};
@@ -33,11 +35,23 @@ for i =1 : length(MFCCDATA)
              id_closestClass=dclass;
         end
     end
+    min_cost
+    id_closestspeaker
+    id_closestClass
+    
+    speakerid
+    digitclass
     output(i,1)=min_cost;
     output(i,2)= strcmp(speakerid,id_closestspeaker);
     output(i,3) =strcmp(digitclass,id_closestClass);
+    count=count+1;
+    if(count==10)
+        i
+        count=1;
+    end
 end
-save ('RDTW_w0.1.mat',output);
+time=toc;
+save ('RDTW_w0.1.mat','output','time');
 end
         
         
