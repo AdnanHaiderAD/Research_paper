@@ -1,7 +1,7 @@
 function optimumCost = DynamicTimeWarping(varargin)
 %%The DTW algorithm using a symmetric weighting function t ensure
 %%D(A,B)=D(B,A)
-varargi
+
 if length(varargin)<2
     error('input:arg','The DTW arguments needs to be two patterns')
 end
@@ -43,6 +43,7 @@ for i=2:patternANum
     end
 end
 optimumCost = DTW(length(patternA),length(patternB))/(length(patternA)+length(patternB)-2);
+optimumCost= log(optimumCost);
 
 
 
