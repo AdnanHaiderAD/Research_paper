@@ -3,8 +3,10 @@ function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
 % Applies DTW algorithm to group together similar patterns
 tic;
 costMatrix=zeros(length(MFCCDATA),length(MFCCDATA));
-output= zeros(length(MFCCDATA),3);
+%%output= zeros(length(MFCCDATA),3);
+output =zeros(10,3);
 count=1;
+
 for i =1 : length(MFCCDATA)
     currentPattern =MFCCDATA{i};
     metaData =SpeakersDigitsIndex{i};
@@ -18,7 +20,7 @@ for i =1 : length(MFCCDATA)
         if(i==j)
             continue;
         end
-        pattern=MFCCDATA{j}; 
+        pattern=MFCCDATA{j};
         meta =SpeakersDigitsIndex{j};
         spid =meta{1};
         dclass=meta{2};

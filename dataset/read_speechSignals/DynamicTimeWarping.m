@@ -16,7 +16,7 @@ end
 patternA =varargin{1};
 patternB = varargin{2};
 
-windowSize = max(ceil(window*(max(length(patternA),length(patternB)))),abs(length(patternA)-length(patternB)));
+windowSize = max(ceil(window*(max(size(patternA,2),size(patternB,2)))),abs(size(patternA,2)-size(patternB,2)));
 
 %% initializing the DTW cost matrix
 DTW = zeros(length(patternA)+1,length(patternB)+1);
