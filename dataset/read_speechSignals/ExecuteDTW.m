@@ -5,7 +5,7 @@ tic;
 costMatrix=zeros(length(MFCCDATA),length(MFCCDATA));
 output= zeros(length(MFCCDATA),3);
 count=1;
-for i =1 : 10
+for i =1 : length(MFCCDATA)
     currentPattern =MFCCDATA{i};
     metaData =SpeakersDigitsIndex{i};
     speakerid =metaData{1};
@@ -35,23 +35,16 @@ for i =1 : 10
              id_closestClass=dclass;
         end
     end
-    min_cost
-    id_closestspeaker
-    id_closestClass
     
-    speakerid
-    digitclass
     output(i,1)=min_cost;
     output(i,2)= strcmp(speakerid,id_closestspeaker);
     output(i,3) =strcmp(digitclass,id_closestClass);
     count=count+1;
-    if(count==10)
-        i
-        count=1;
-    end
+    
 end
 time=toc;
-save ('RDTW_w0.1.mat','output','time');
+filename=['RDTW_w' num2str(windowSize) '.mat'];
+save (filename,'output','time');
 end
         
         
