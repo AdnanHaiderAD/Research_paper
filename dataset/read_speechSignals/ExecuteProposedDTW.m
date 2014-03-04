@@ -1,10 +1,13 @@
-function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
+function ExecuteProposedDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
 %%Input: Dataset (Tidigits corpus/ Switchboard), windowSize
 % Applies DTW algorithm to group together similar patterns
+
+%%partition each  MFFC data sequences into sequence of frames of size windowSize
+MFCCDATA=PartitionMFCC(MFCCDATA,windowSize);
+
 tic;
 costMatrix=zeros(length(MFCCDATA),length(MFCCDATA));
 output= zeros(length(MFCCDATA),3);
-
 count=1;
 
 for i =1 : 10
@@ -24,14 +27,15 @@ for i =1 : 10
         meta =SpeakersDigitsIndex{j};
         spid =meta{1};
         dclass=meta{2};
+        
         if (j<i)
             cost =costMatrix(j,i);
-            
         else
-            cost= DynamicTimeWarping(currentPattern,pattern,windowSize);
+            cost= ProposedDynamicTimeWarping(currentPattern,pattern,windowSize);
             costMatrix(i,j)=cost;
         end
-        if (cost <min_cost) 
+        
+        if (cost <min_cost)
              min_cost=cost;
              id_closestspeaker=spid;
              id_closestClass=dclass;

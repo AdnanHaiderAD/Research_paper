@@ -1,4 +1,4 @@
-function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
+function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize,dtw)
 %%Input: Dataset (Tidigits corpus/ Switchboard), windowSize
 % Applies DTW algorithm to group together similar patterns
 tic;
@@ -7,7 +7,7 @@ output= zeros(length(MFCCDATA),3);
 
 count=1;
 
-for i =1 : 10
+for i =1 : length(MFCCDATA)
     currentPattern =MFCCDATA{i};
     metaData =SpeakersDigitsIndex{i};
     speakerid =metaData{1};
@@ -28,7 +28,10 @@ for i =1 : 10
             cost =costMatrix(j,i);
             
         else
+            if(strcmp(dtw,'dtw')
             cost= DynamicTimeWarping(currentPattern,pattern,windowSize);
+            else if *strcmp(dtw,'proposed'
+            end
             costMatrix(i,j)=cost;
         end
         if (cost <min_cost) 

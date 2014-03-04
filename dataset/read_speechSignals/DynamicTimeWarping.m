@@ -19,7 +19,7 @@ patternB = varargin{2};
 windowSize = max(ceil(window*(max(size(patternA,2),size(patternB,2)))),abs(size(patternA,2)-size(patternB,2)));
 
 %% initializing the DTW cost matrix
-DTW = zeros(length(patternA)+1,length(patternB)+1);
+DTW = zeros(size(patternA,2)+1,size(patternB,2)+1);
 for i=2:length(patternA)
    DTW(i,1)=Inf;
 end
@@ -28,14 +28,16 @@ for j=2:length(patternB)
 end
 
 %% augmenting patterns with a vector of zeros
-patternA = [zeros(length(patternA(:,1)),1) patternA];
-patternB = [zeros(length(patternB(:,1)),1) patternB];
+patternA = [zeros(size(patternA,1),1) patternA];
+patternB = [zeros(size(patternB,1),1) patternB];
 patternANum = size(patternA,2);
 patternBNum= size(patternB,2);
 
 for i=2:patternANum
     for j=2:patternBNum
         if (length(varargin)==3 && abs(i-j)>windowSize)
+            %%force all warping paths to go through the window
+            DTW(i,j)=Inf;
             continue;
         end
         cost = sum((patternA(:,i) -patternB(:,j)).^2);
@@ -44,6 +46,7 @@ for i=2:patternANum
 end
 
 optimumCost = DTW(patternANum,patternBNum)/(patternANum+patternBNum-2);
+
 
 
 
