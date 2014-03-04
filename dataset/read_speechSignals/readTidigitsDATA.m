@@ -30,7 +30,7 @@ for i=1:length(genders)
            end
            %%read data and conduct preprocessing : resampling followed by silence removal
            speechdata= readnist(datapath);
-           DATA{count}= filterSignal(speechdata);
+           DATA{count}= speechdata;
            speakersDigitIndex{count} ={listofSpeakers(j) , data(k)};
            count=count+1;
         end
