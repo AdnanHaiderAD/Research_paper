@@ -7,7 +7,7 @@ output= zeros(length(MFCCDATA),3);
 
 count=1;
 
-for i =1 : 10
+for i =1 : length(MFCCDATA)
     currentPattern =MFCCDATA{i};
     metaData =SpeakersDigitsIndex{i};
     speakerid =metaData{1};
