@@ -4,7 +4,7 @@ function ExecuteDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
 tic;
 %%number of comparisons: N choose 2
 numberofComparisons= factorial(length(MFCCDATA))/(factorial(2)*factorial(length(MFCCDATA)-2));
-output= zeros(numberofComparisons,3);
+%%output= zeros(numberofComparisons,3);
 
 count=1;
 for i =1 :length(MFCCDATA)
