@@ -6,9 +6,8 @@ function ExecuteProposedDTW(MFCCDATA,SpeakersDigitsIndex, windowSize)
 MFCCDATA=PartitionMFCC(MFCCDATA,windowSize);
 
 tic;
-%%number of comparisons: N choose 2
-numberofComparisons= factorial(length(MFCCDATA))/(factorial(2)*factorial(length(MFCCDATA)-2));
-%%output= zeros(numberofComparisons,3);
+output=[];
+time=0;
 count=1;
 for i =1 :length(MFCCDATA)
     currentPattern =MFCCDATA{i};
@@ -20,16 +19,29 @@ for i =1 :length(MFCCDATA)
         meta =SpeakersDigitsIndex{j};
         spid =meta{1};
         dclass=meta{2};
-    end    
-    output(count,1)=ProposedDynamicTimeWarping(currentPattern,pattern,windowSize);
-    output(count,2)= strcmp(speakerid,spid);
-    output(count,3)=strcmp(digitclass,dclass);
-    count=count+1;
-end
-
-time=toc;
-filename=['RDTW_w' num2str(windowSize) '.mat'];
-save (filename,'output','time');
-end
+        output(count,1)=log(ProposedDynamicTimeWarping(currentPattern,pattern,windowSize));
+        output(count,2)= strcmp(speakerid,spid);
+        output(count,3) =strcmp(digitclass,dclass);
+        if (count>10000)
+            filename=['RDTW_w' num2str(windowSize) '.txt'];
+            dlmwrite(filename,output,'-append','delimiter','\t');
+            count=0;
+            output=[];
+            filestatus=['RDTW_w' num2str(windowSize) '.mat'];
+            time=time+toc;
+            tic;
+            save (filestatus,'i','j','time');
+        end
+        count=count+1;
         
+    end
+end
+filename=['RDTW_w' num2str(windowSize) '.txt'];
+dlmwrite(filename,output,'-append','delimiter','\t');
+filestatus=['RDTW_w' num2str(windowSize) '.mat'];
+time=time+toc;
+save (filestatus,'time');
+
+
+end
         
