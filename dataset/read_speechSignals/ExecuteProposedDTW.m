@@ -19,7 +19,7 @@ for i =1 :length(MFCCDATA)
         meta =SpeakersDigitsIndex{j};
         spid =meta{1};
         dclass=meta{2};
-        output(count,1)=log(ProposedDynamicTimeWarping(currentPattern,pattern,windowSize));
+        output(count,1)=ProposedDynamicTimeWarping(currentPattern,pattern,windowSize);
         output(count,2)= strcmp(speakerid,spid);
         output(count,3) =strcmp(digitclass,dclass);
         if (count>10000)
