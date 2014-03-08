@@ -40,7 +40,8 @@ for i=2:patternANum
             DTW(i,j)=Inf;
             continue;
         end
-        cost = sum((patternA(:,i) -patternB(:,j)).^2);
+        %%cosine distance
+        cost = 1-(sum(patternA(:,i).*patternB(:,j))/(sqrt(sum(patternA(:,i).^2))*sqrt(sum(patternB(:,j).^2))));
         DTW(i,j)  = min([(DTW(i,j-1)+cost) (DTW(i-1,j-1)+2*cost) (DTW(i-1,j)+cost)]);
     end
 end
