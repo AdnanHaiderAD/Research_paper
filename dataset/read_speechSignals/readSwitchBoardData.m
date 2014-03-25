@@ -6,17 +6,22 @@ function readSwitchBoardData(metadata)
 rawSamples = cell(numOfSamples,1);
 
 for i=1 : numOfSamples
+    
     fileid = metadata{i,1};
     filename= strcat('sw0',fileid,'.sph');
     filepath = strcat('/group/corpora/large/switchboard/switchboard1/swb1/',filename);
+    
     %% read speech file
     rawSpeechSignal =readsph(filepath);
+   
     %% considering only the first channel
     rawSpeechSignal= rawSpeechSignal(:,1);
+    
     %% extracting the appropriate word from the signal using the start and end times
-    startindex= metadata{i,2}*8000;
-    endIndex =metadata{i,3}*8000;
+    startindex= int8(metadata{i,2}*8000);
+    endIndex  =  int8(metadata{i,3}*8000);
     rawSamples{i} = rawSpeechSignal(startindex: endIndex);
+
 end
 
 save('RawSwitchBoardWordSamples.mat','rawSamples');
