@@ -10,7 +10,7 @@ for i=1 : numOfSamples
     filename= strcat('sw0',fileid,'.sph');
     filepath = strcat('/group/corpora/large/switchboard/switchboard1/swb1/',filename);
     %% read speech file
-    rawSpeechSignal =readsph(fileapath);
+    rawSpeechSignal =readsph(filepath);
     %% considering only the first channel
     rawSpeechSignal= rawSpeechSignal(:,1);
     %% extracting the appropriate word from the signal using the start and end times
