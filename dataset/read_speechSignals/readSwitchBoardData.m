@@ -14,7 +14,9 @@ for i=1 : numOfSamples
     %% considering only the first channel
     rawSpeechSignal= rawSpeechSignal(:,1);
     %% extracting the appropriate word from the signal using the start and end times
-    rawSamples{i} = rawSpeechSignal(metadata{i,2}*8000: metadata{i,3}*8000);
+    startindex= metadata{i,2}*8000;
+    endIndex =metadata{i,3}*8000;
+    rawSamples{i} = rawSpeechSignal(startindex: endIndex);
 end
 
 save('RawSwitchBoardWordSamples.mat','rawSamples');
