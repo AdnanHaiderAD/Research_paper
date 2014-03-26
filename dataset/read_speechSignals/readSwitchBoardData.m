@@ -5,7 +5,7 @@ function readSwitchBoardData(metadata)
 [numOfSamples, num_meta] =size(metadata);
 rawSamples = cell(numOfSamples,1);
 
-for i=1 : 10
+for i=1 : numOfSamples
     
     fileid = metadata{i,1};
     filename= strcat('sw0',fileid,'.sph');
