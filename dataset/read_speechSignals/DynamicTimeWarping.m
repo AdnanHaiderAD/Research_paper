@@ -41,7 +41,7 @@ for i=2:patternANum
             continue;
         end
         %%cosine distance
-        cost = 1-(sum(patternA(:,i).*patternB(:,j))/(sqrt(sum(patternA(:,i).^2))*sqrt(sum(patternB(:,j).^2))));
+        cost = 1-acos(sum(patternA(:,i).*patternB(:,j))/(sqrt(sum(patternA(:,i).^2))*sqrt(sum(patternB(:,j).^2))))/pi;
         DTW(i,j)  = min([(DTW(i,j-1)+cost) (DTW(i-1,j-1)+2*cost) (DTW(i-1,j)+cost)]);
     end
 end

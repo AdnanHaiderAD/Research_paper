@@ -1,5 +1,5 @@
-load ../data/TidigitsWithSilR/MFCCTIDIGITS.mat
-load ../data/TidigitsWithSilR/TidigitsData.mat
-ExecuteDTW(MFCCdata,speakersDigitIndex,0.1);
-ExecuteDTW(MFCCdata,speakersDigitIndex,0.2);
-ExecuteDTW(MFCCdata,speakersDigitIndex,0.3);
+load ../data/SwitchBoard/MFCCSwitchBoard.mat
+load ../data/SwitchBoard/metadataSwitchboard.mat
+ExecuteDTW(MFCCdata,metadata,0.1);
+ExecuteDTW(MFCCdata,metadata,0.2);
+ExecuteDTW(MFCCdata,metadata,0.3);

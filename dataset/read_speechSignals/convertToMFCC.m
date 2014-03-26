@@ -5,8 +5,8 @@ numberofSamples =length(RawData);
 MFCCdata =cell(numberofSamples,1);
 
 for i=1: numberofSamples
-    MFCCdata{i} = melfcc(resample(RawData{i},1,2));
+    MFCCdata{i} = melfcc(RawData{i});
 end
-save('MFCCTIDIGITS.mat','MFCCdata');
+save('MFCCSwitchBoard.mat','MFCCdata');
 end
 
