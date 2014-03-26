@@ -19,7 +19,7 @@ for i=1 : numOfSamples
     
     %% extracting the appropriate word from the signal using the start and end times
     startindex= int32(metadata{i,2}*8000);
-    endIndex  = int32(metadata{i,3}*8000);
+    endIndex  = int8(metadata{i,3}*8000);
     rawSamples{i} = rawSpeechSignal(startindex: endIndex);
 
 end
