@@ -3,7 +3,7 @@ function readSwitchBoardData(metadata)
 %1) fileid, 2) start time of the word  and 3) end time of the word in the signal
 %%
 [numOfSamples, num_meta] =size(metadata);
-rawSamples = cell(numOfSamples,1);
+rawSamples = cell(10,1);
 
 for i=1 : 10
     
