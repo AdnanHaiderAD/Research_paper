@@ -5,7 +5,7 @@ function readSwitchBoardData(metadata)
 [numOfSamples, num_meta] =size(metadata);
 rawSamples = cell(numOfSamples,1);
 
-for i=1 : numOfSamples
+for i=1 : 10
     
     fileid = metadata{i,1};
     filename= strcat('sw0',fileid,'.sph');
@@ -16,11 +16,12 @@ for i=1 : numOfSamples
    
     %% considering only the first channel
     rawSpeechSignal= rawSpeechSignal(:,1);
+    size(rawSpeechSignal)
     
     %% extracting the appropriate word from the signal using the start and end times
-    startindex= int32(metadata{i,2}*8000);
-    endIndex  = int32(metadata{i,3}*8000);
-    rawSamples{i} = rawSpeechSignal(startindex: endIndex);
+    startindex= int32(metadata{i,2}*8000)
+    endIndex  = int32(metadata{i,3}*8000)
+    rawSamples{i} = rawSpeechSignal(startindex: endIndex)
 
 end
 
