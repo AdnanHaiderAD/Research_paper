@@ -28,7 +28,7 @@ for i =1 : length(wordlist)
     end
     metadata2{i,1}= fileid;
     metadata2{i,2}= str2double(metainfo{5})/100;
-    metadata2{i,3} = str2double(metainfo{5})/100;
+    metadata2{i,3} = str2double(metainfo{6})/100;
     
 end
 
