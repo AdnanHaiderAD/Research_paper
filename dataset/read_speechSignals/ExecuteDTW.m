@@ -48,7 +48,7 @@ for i =1 :length(mFCCDATA)
         if (count>10000)
             filename=['RDTW_w' num2str(windowSize) '.txt'];
             dlmwrite(filename,output,'-append','delimiter','\t');
-            count=0;
+            count=1;
             output=[];
             filestatus=['RDTW_w' num2str(windowSize) '.mat'];
             time=time+toc;

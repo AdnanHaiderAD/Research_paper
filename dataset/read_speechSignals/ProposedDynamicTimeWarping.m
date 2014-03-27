@@ -43,7 +43,7 @@ for i=2:length(patternA)
         frameA= patternA{i};
         frameB =patternB{j};
         %%proposed cost metric
-        cost = real(acos(sum(sum(frameA,2).*sum(frameB,2))/(norm(sum(frameA,2))*norm(sum(frameB,2)))));
+        cost = 1-(real(acos(sum(sum(frameA,2).*sum(frameB,2))/(norm(sum(frameA,2))*norm(sum(frameB,2))))))/pi;
         DTW(i,j)  = min([(DTW(i,j-1)+cost) (DTW(i-1,j-1)+2*cost) (DTW(i-1,j)+cost)]);
     end
 end
