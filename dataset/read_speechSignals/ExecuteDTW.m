@@ -5,28 +5,27 @@ function ExecuteDTW(varargin)
 %and whether the two patterns belong to the same word type. 
 
 if length(varargin)==3
-    mFCCDATA         =varargin(1);
-    wordSpeakerIndex =varargin(2);
-    windowSize       =varargin(3);
+    mFCCDATA         =varargin{1};
+    wordSpeakerIndex =varargin{2};
+    windowSize       =varargin{3};
     k=1;
     m=0;
     time=0;
 else if length(varargin)==6
-       mFCCDATA         =varargin(1);
-       wordSpeakerIndex =varargin(2);
-       windowSize       =varargin(3);
-       k= varargin(4);
-       m= varargin(5);
-       time=varargin(6);
+       mFCCDATA         =varargin{1};
+       wordSpeakerIndex =varargin{2};
+       windowSize       =varargin{3};
+       k= varargin{4};
+       m= varargin{5};
+       time=varargin{6};
     end
 end
        
     
 tic;
 output=[];
-
 count=1;
-for i =k :length(mFCCDATA)
+for i =k:length(mFCCDATA)
     currentPattern =mFCCDATA{i};
     %%  tidigits data
     %metaData =wordSpeakerIndex{i};

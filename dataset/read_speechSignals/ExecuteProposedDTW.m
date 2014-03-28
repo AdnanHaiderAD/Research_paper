@@ -3,19 +3,19 @@ function ExecuteProposedDTW(varargin)
 % Applies DTW algorithm to group together similar patterns
 
 if length(varargin)==3
-    MFCCDATA         =varargin(1);
-    wordSpeakerIndex =varargin(2);
-    windowSize       =varargin(3);
+    MFCCDATA         =varargin{1};
+    wordSpeakerIndex =varargin{2};
+    windowSize       =varargin{3};
     k=1;
     m=0;
     time=0;
 else if length(varargin)==6
-       MFCCDATA         =varargin(1);
-       wordSpeakerIndex =varargin(2);
-       windowSize       =varargin(3);
-       k= varargin(4);
-       m= varargin(5);
-       time=varargin(6);
+       MFCCDATA         =varargin{1};
+       wordSpeakerIndex =varargin{2};
+       windowSize       =varargin{3};
+       k= varargin{4};
+       m= varargin{5};
+       time=varargin{6};
     end
 end
        
