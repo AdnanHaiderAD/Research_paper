@@ -68,17 +68,16 @@ for i =k :length(MFCCDATA)
           filename=['RDTW_w' num2str(windowSize) '.txt'];
           dlmwrite(filename,output,'-append','delimiter','\t');
           count=1;
-          output=[];
-          filestatus=['RDTW_w' num2str(windowSize) '.mat'];
-          time=time+toc;
-          tic;
-          save (filestatus,'i','j','time');
-      end
-      count=count+1;
-   end
-   if m>0
-      m=0;
+            output=[];
+            filestatus=['RDTW_w' num2str(windowSize) '.mat'];
+            time=time+toc;
+            tic;
+            save (filestatus,'i','j','time');
+        end
+        count=count+1;
+        
     end
+    
 end
 filename=['RDTW_w' num2str(windowSize) '.txt'];
 dlmwrite(filename,output,'-append','delimiter','\t');
