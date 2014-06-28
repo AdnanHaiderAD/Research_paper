@@ -10,7 +10,7 @@ function ExecuteProposedDTW(varargin)
     k = 1;
     m = 0;
     time = 0;
-    output = zeros(5000*4999/2,3);
+    output = zeros(500*999,3);
     count = 1;
  else if length(varargin)==8
        MFCCDATA         =varargin{1};
@@ -29,7 +29,7 @@ function ExecuteProposedDTW(varargin)
  MFCCDATA=PartitionMFCC(MFCCDATA,windowSize);
 
  tic;
- 
+ counter=1;
 
  for i =k :length(MFCCDATA)
     %% get MFCC vector,wordtype and speakerid 
@@ -59,14 +59,15 @@ function ExecuteProposedDTW(varargin)
         output(count,1) = cost;
         output(count,2) = strcmp(wordType,wtype);
         output(count,3) = speakerid==spid;
-        
-        if (count>10000)
+        counter=counter+1;
+        if (counter>500)
           filename=['RDTW_w' num2str(windowSize) '.txt'];
           dlmwrite(filename,output,'delimiter','\t');
           filestatus=['RDTW_w' num2str(windowSize) '.mat'];
           time=time+toc;
           tic;
           save (filestatus,'i','j','time');
+          counter=1;
         end
         count=count+1;
     end
