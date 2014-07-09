@@ -48,7 +48,7 @@ function ExecuteProposedDTW(varargin)
         wtype = wordSpeakerIndex{j,1};
         spid = wordSpeakerIndex{j,2};
       
-        cost =ProposedDynamicTimeWarping(currentPattern,pattern,windowSize);
+        cost =ProposedDynamicTimeWarping(currentPattern,pattern);
         % round cost to 5sf
         cost = round(cost/.00001)*0.00001;
         
