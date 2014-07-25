@@ -50,14 +50,15 @@ function ExecuteDTW(varargin)
         output(count,1) = cost;
         output(count,2) = strcmp(wordType,wtype);
         output(count,3) = speakerid==spid;
-        counter
-        if (count>10000)
+        counter=counter+1;
+        if (counter>2000)
+            time=time+toc;
             filename=['RDTW_w' num2str(windowSize) '.txt'];
             dlmwrite(filename,output,'delimiter','\t');
             filestatus=['RDTW_w' num2str(windowSize) '.mat'];
-            time=time+toc;
-            tic;
             save (filestatus,'i','j','time');
+            tic;
+            counter=1;
         end
         count=count+1;
      end

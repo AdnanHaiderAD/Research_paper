@@ -51,13 +51,13 @@ function ExecuteDTW(varargin)
         output(count,2) = strcmp(wordType,wtype);
         output(count,3) = speakerid==spid;
         counter=counter+1;
-        if (counter>500)
+        if (counter>2000)
+            time=time+toc;
             filename=['RDTW_w' num2str(windowSize) '.txt'];
             dlmwrite(filename,output,'delimiter','\t');
             filestatus=['RDTW_w' num2str(windowSize) '.mat'];
-            time=time+toc;
-            tic;
             save (filestatus,'i','j','time');
+            tic;
             counter=1;
         end
         count=count+1;
@@ -66,10 +66,10 @@ function ExecuteDTW(varargin)
       m=0;
      end
  end
+ time=time+toc;
  filename=['RDTW_w' num2str(windowSize) '.txt'];
  dlmwrite(filename,output,'delimiter','\t');
  filestatus=['RDTW_w' num2str(windowSize) '.mat'];
- time=time+toc;
  save (filestatus,'time');
 
 
